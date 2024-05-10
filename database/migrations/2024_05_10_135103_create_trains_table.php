@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('arrive_station', 25);
             $table->time('departure_time');
             $table->time('arriving_time');
-            $table->bigInteger('arrive_station');
+            $table->bigInteger('train_code', false, false)->unique();
             $table->integer('wagon_count')->nullable();
             $table->boolean('on_time')->default(true);
             $table->boolean('canceled')->default(false);
