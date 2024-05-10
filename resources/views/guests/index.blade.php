@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container my-container mt-5">
+    <div class="container my-container mt-5 bg-dark p-3">
 
-        <h1 class="mb-5">Trains departing today:</h1>
+        <h1 class="mb-5 p-2">Trains departing today:</h1>
 
-        <div class="row">
+        <div class="row bg-dark">
 
             @foreach ($trains as $train)
-                <div class="col">
-                    <div class="card">
+                <div class="col bg-dark">
+                    <div class="card my_card bg-dark">
 
                         <div class="title-box d-flex justify-content-between align-items-center px-5 py-3 ">
                             <div class="card-title fs-1 d-inline fw-bold">
