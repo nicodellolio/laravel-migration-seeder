@@ -16,7 +16,7 @@ class TrainsTableSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        $today = Carbon::now(2)->toDateString();
+        $today = Carbon::now(2)->toFormattedDateString();
 
         for ($i=0; $i < 15; $i++) { 
             $train = new Train();
