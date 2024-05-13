@@ -39,6 +39,10 @@ class TrainController extends Controller
      */
     public function show(Train $train)
     {
+        $trains = Train::orderByAsc('departure_time')->get();
+
+        return view('guests.show', compact('train'));
+
     }
 
     /**
