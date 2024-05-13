@@ -6,6 +6,8 @@ use App\Models\Train;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Carbon\Carbon;
+
 
 class TrainsTableSeeder extends Seeder
 {
@@ -14,10 +16,12 @@ class TrainsTableSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
+        $today = Carbon::now(2)->toDateString();
 
         for ($i=0; $i < 15; $i++) { 
             $train = new Train();
             $train->brand_company = $faker->lastName() . 'Rail';
+            $train->date = $today;
             $train->departure_station = $faker->city();
             $train->arrive_station = $faker->city();
             $train->departure_time = $faker->time('H:i:s', '10:00:00');

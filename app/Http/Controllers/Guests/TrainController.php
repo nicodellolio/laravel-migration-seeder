@@ -21,6 +21,13 @@ class TrainController extends Controller
         return view('guests.index', compact('trains'));
     }
 
+    public function tomorrow()
+    {
+        $trains = Train::where('departure_time', '>', '14:12:12')->orderBy('departure_time')->get();
+
+        return view('guests.index', compact('trains'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
