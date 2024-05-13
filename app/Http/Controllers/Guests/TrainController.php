@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guests;
 
 use App\Http\Controllers\Controller;
 use App\Models\Train;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TrainController extends Controller
@@ -13,7 +14,9 @@ class TrainController extends Controller
      */
     public function index()
     {
-        $trains = Train::all();
+        $now = Carbon::now(2)->toTimeString();
+
+        $trains = Train::where('departure_time', '>', $now)->orderBy('departure_time')->get();
 
         return view('guests.index', compact('trains'));
     }
@@ -39,7 +42,6 @@ class TrainController extends Controller
      */
     public function show(Train $train)
     {
-        $trains = Train::orderByAsc('departure_time')->get();
 
         return view('guests.show', compact('train'));
 
