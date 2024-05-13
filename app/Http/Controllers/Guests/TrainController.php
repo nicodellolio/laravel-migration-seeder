@@ -42,7 +42,7 @@ class TrainController extends Controller
      */
     public function show(Train $train)
     {
-
+        // $trains = Train::where('departure_time', '>', $now)->orderBy('departure_time')->get();
         return view('guests.show', compact('train'));
 
     }
