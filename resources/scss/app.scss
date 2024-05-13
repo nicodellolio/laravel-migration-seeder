@@ -14,9 +14,11 @@ body{
 }
 
 div.home-background{
+    margin: 0;
     height: 100vh;
     background-image: url(../img/Turkey-Train-Tickets-More_Depositphotos-bgremover_44339047_S.webp);
     background-size: cover;
+    overflow: hidden;
     background-color: #333;
     background-blend-mode: overlay;
     background-repeat: no-repeat;
