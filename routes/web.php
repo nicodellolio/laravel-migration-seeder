@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('guests.home');
 });
 
-Route::get('/trains', [TrainController::class, 'index'])->name('guests.index');
+Route::get('/trains/today', [TrainController::class, 'index'])->name('guests.trains.today');
+Route::get('/trains/tomorrow', [TrainController::class, 'tomorrow'])->name('guests.trains.tomorrow');
 
-Route::get('/trains/{train}', [TrainController::class, 'show'])->name('guests.show');
+Route::get('/trains/{train}', [TrainController::class, 'show'])->name('guests.trains.show');

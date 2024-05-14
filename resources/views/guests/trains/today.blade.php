@@ -1,6 +1,6 @@
-<?php 
+<?php
 use Carbon\Carbon;
-$now = Carbon::now(2)->toTimeString()
+$now = Carbon::now(2)->toTimeString();
 ?>
 
 @extends('layouts.app')
@@ -10,7 +10,7 @@ $now = Carbon::now(2)->toTimeString()
 
         <div class="upper_container d-flex justify-content-between">
             <div class="mb-5 p-2 fs-1">Trains departing next</div>
-            <div class="mb-5 p-3 fs-2 text-end time_box">Current time:<br>{{($now)}}</div>
+            <div class="mb-5 p-3 fs-2 text-end time_box">Current time:<br>{{ $now }}</div>
         </div>
 
 
@@ -20,7 +20,7 @@ $now = Carbon::now(2)->toTimeString()
                 <div class="col bg-dark">
                     <div class="card my_card bg-dark mt-3">
 
-                        <a class="text-decoration-none" href="{{ route('guests.show', $train) }}">
+                        <a class="text-decoration-none" href="{{ route('guests.trains.show', $train) }}">
 
                             <div class="title-box my_title_box d-flex justify-content-between align-items-center mx-5 py-3">
                                 <div class="card-title fs-1 d-inline fw-bold">
@@ -57,13 +57,27 @@ $now = Carbon::now(2)->toTimeString()
                         </a>
                     </div>
             @endforeach
+            
+            <div class="col bg-dark">
+                <div class="card my_card bg-dark mt-3">
 
+                    <a class="btn btn-warning border-dark rounded-3 fw-light btn-sm fs-5 p-3"
+                        href="{{ route('guests.trains.tomorrow') }}" role="button">
+                        Didn't find what you are lookin for? Try tomorrow departures
+                    </a>
+
+                </div>
+            </div>
 
         </div>
+
+        
         <div class="back d-flex justify-content-evenly mt-5">
-            <a class="btn btn-warning border-warning rounded-3 fw-light btn-sm fs-3 mt-5 px-5 py-3" href="/" role="button">
+            <a class="btn btn-dark border-warning rounded-3 fw-light btn-sm fs-3 mt-5 px-5 py-3" href="/"
+                role="button">
                 Homepage
             </a>
+
         </div>
     </div>
 @endsection

@@ -15,17 +15,20 @@ class TrainController extends Controller
     public function index()
     {
         $now = Carbon::now(2)->toTimeString();
+        $today = Carbon::now(2)->toDateString();
 
-        $trains = Train::where('departure_time', '>', $now)->orderBy('departure_time')->get();
+        $trains = Train::where('date', '=', $today)->where('departure_time', '>', $now)->orderBy('departure_time')->get();
 
-        return view('guests.index', compact('trains'));
+        return view('guests.trains.today', compact('trains'));
     }
 
     public function tomorrow()
     {
-        $trains = Train::where('departure_time', '>', '14:12:12')->orderBy('departure_time')->get();
+        $tomorrow = Carbon::now(2)->addDay()->toDateString();
 
-        return view('guests.index', compact('trains'));
+        $trains = Train::where('date', '=', $tomorrow)->orderBy('departure_time')->get();
+
+        return view('guests.trains.tomorrow', compact('trains'));
     }
 
     /**
@@ -50,7 +53,7 @@ class TrainController extends Controller
     public function show(Train $train)
     {
         // $trains = Train::where('departure_time', '>', $now)->orderBy('departure_time')->get();
-        return view('guests.show', compact('train'));
+        return view('guests.trains.show', compact('train'));
 
     }
 
